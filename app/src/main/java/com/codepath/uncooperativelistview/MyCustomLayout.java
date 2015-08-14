@@ -19,7 +19,6 @@ public class MyCustomLayout extends ViewGroup {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int childCount = getChildCount();
-        int childState = 0;
 
         int widthUsed =  getPaddingRight() + getPaddingLeft();
         int heightUsed = getPaddingTop() + getPaddingBottom();
@@ -58,8 +57,8 @@ public class MyCustomLayout extends ViewGroup {
             throw new RuntimeException("MyCustomLayout must have two children");
         }
 
-        int measuredWidth = resolveSizeAndState(widthUsed, widthMeasureSpec, childState);
-        int measuredHeight = resolveSizeAndState(heightUsed, heightMeasureSpec, childState);
+        int measuredWidth = resolveSize(widthUsed, widthMeasureSpec);
+        int measuredHeight = resolveSize(heightUsed, heightMeasureSpec);
 
         setMeasuredDimension(measuredWidth, measuredHeight);
     }
